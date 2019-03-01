@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+export default class Numbers extends Component {
 
-class App extends Component {
+  state = {
+    numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+  }
+
+  chickenMonkey(number) {
+    if (number % 3 === 0 && number % 5 === 0) {
+      return <span>ChickenMonkey</span>
+    } else if (number % 3 === 0) {
+      return <span>Chicken</span>
+    } else if (number % 5 === 0) {
+      return <span>Monkey</span>
+    }
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <article>
+        {this.state.numbers.map(number => {
+          return <div key={number}>
+            {`${number}: `}
+            <span>
+              {this.chickenMonkey(number)}
+            </span>
+          </div>
+        })
+        }
+      </article >
+    )
   }
 }
-
-export default App;
